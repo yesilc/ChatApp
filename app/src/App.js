@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import io from "socket.io-client";
 import defaultProfileImage from "./default_profile_image.png";
 
-
+// const socket = io.connect("http://localhost:3001");
 
 function App() {
   const [notifications, setNotifications] = useState(null);
@@ -15,11 +15,10 @@ function App() {
   const [socket, setSocket] = useState(null);
 
   const handleLogin = () => {
-    const connectSocket = io();
+    const connectSocket = io("http://localhost:3001");
     setSocket(connectSocket);
     setSocketError(null);
     setNotifications([]);
-    console.log("login")
   };
   const handleLogout = () => {
     socket.disconnect();
@@ -126,21 +125,23 @@ function App() {
       ) : (
         <div className="login__container">
           <h1>Login</h1>
-          <input
-            type="text"
-            value={username}
-            placeholder="Username"
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button type="button" onClick={handleLogin}>
-            Login
-          </button>
+          <form>
+            <input
+              type="text"
+              value={username}
+              placeholder="Username"
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button type="button" onClick={handleLogin}>
+              Login
+            </button>
+          </form>
         </div>
       )}
       {socketError ? <p>{socketError}</p> : null}
