@@ -1,49 +1,96 @@
-.App {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .user__container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .user__container > img {
-    width: 100px;
-    height: 100px;
-  }
-  .user__container button {
-    margin: 5px;
-    height: 40px;
-    border: 1px solid gray;
-    border-radius: 5px;
-    width: 120px;
-    cursor: pointer;
-  }
-  .login__container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+*{
+  margin:0;
+  padding: 0;
+}
+
+.main_page{
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(9,1fr);
+  grid-auto-rows: 50px auto 50px;
+  grid-template-areas:
+  "hd hd hd hd hd hd hd hd hd"
+  "sd ch ch ch ch ch ch ch ch"
+  "sd ch ch ch ch ch ch ch ch"
+  "sd in in in in in in in in";
+}
+.message_area{
+  grid-area: ch;
+  background-color: aqua;
+  list-style-type: none;
+  overflow-y: auto;
+}
+.feedback{
+  position: absolute;
+  left: 111px;
+  bottom: 50px;
+  background-color: aqua;
+}
+.main_page header{
+  border: 3px solid;
+  grid-area: hd;
+  font-size: 45px;
+  background-color: chartreuse;
+  text-align: center;
+}
+
+.chat_area{
+  display: grid;
+  grid-area: in;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.chat_area input{
+  grid-column: 1 / 5;
+  border-top: 3px solid ;
+}
+.user__container{
+  border: 3px solid;
+  display: grid;
+  grid-area: sd;
+  background-color: brown;
+  align-items: center;
+  justify-content: center;
+}
+.login_container{
+  display: flex;
+  width: 100%;
+  height: 400px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.login_container form{
+  display: flex;
+  flex-direction: column;
+}
+.message{
+  display: flex;
+  justify-content: flex-end;
+  font-size: larger;
+  padding-top: 5px;
+  padding-right: 5px;
+}
+.message span{
+  padding: 1rem;
+  background-color: lightgreen;
+  border-radius: 25px;
+}
+.received_message{
+  display: flex;
+  justify-content: flex-start;
+  font-size: larger;
+  padding-top: 5px;
+  padding-left: 5px;
   
-  .login__container button,
-  input {
-    margin: 5px;
-    height: 40px;
-    border: 1px solid gray;
-    border-radius: 5px;
-  }
-  .login__container button,
-  input {
-    padding-left: 5px;
-  }
-  .login__container input {
-    width: 250px;
-  }
-  .login__container button {
-    width: 120px;
-    cursor: pointer;
-  }
+}
+.received_message span{
+  padding: 1rem;
+  background-color: white;
+  border-radius: 25px;
+}
+
+img{
+  width: 100px;
+  height: 100px;
+}

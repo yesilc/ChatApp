@@ -67,9 +67,15 @@ const socketEvents = (io) =>{
             profileImage: socket.user.profileImage,
           });
         });
+        socket.on("send_message", (message, username) =>{
+          socket.broadcast.emit("received_message", message, username)
+        } )
         socket.on("disconnect", () => {
           socket.disconnect("disconnect");
         });
+        socket.on('typing', username =>{
+          socket.broadcast.emit('typingnow', username)
+        })
       });
 }
 
